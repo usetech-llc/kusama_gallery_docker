@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<configuration>
+  <connectionStrings>
+    <add name="Postgres" connectionString="Host=chiba_db;Port=5432;Database=chiba;Username=chiba;Password=12345" />
+  </connectionStrings>
+  <appSettings>
+    <add key="Substrate" value="wss://kusama-rpc.polkadot.io" />
+    <add key="StartBlockNum" value="3694" />
+    <add key="ParseAttemptTimeoutMs" value="5000" />
+  </appSettings>
+</configuration>

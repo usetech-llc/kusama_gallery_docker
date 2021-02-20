@@ -1,0 +1,46 @@
+﻿version: "3"
+
+services:
+  chiba_db:
+    container_name: chiba_db
+    image: postgres
+    env_file:
+      - ./.env
+    environment:
+      PGDATA: /data/postgres
+    volumes:
+      - postgres:/data/postgres
+    ports:
+      - "5432:5432"
+    networks:
+      - chibanet
+    restart: unless-stopped
+  chiba_api:
+    container_name: chiba_api
+    build:
+      context: .
+      dockerfile: Dockerfile.api
+    ports:
+      - "5000:5000"
+      - "5001:5001"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:5000
+    networks:
+      - chibanet
+    restart: unless-stopped
+  chiba_indexer:
+    container_name: chiba_indexer
+    build:
+      context: .
+      dockerfile: Dockerfile.indexer
+    networks:
+      - chibanet
+    restart: unless-stopped
+
+networks:
+  chibanet:
+    driver: bridge
+
+volumes:
+  postgres:
