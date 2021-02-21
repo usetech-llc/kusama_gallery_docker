@@ -2,7 +2,7 @@
 
 ## Configuring
 
-1. Create .env file with database username and password. This user and password will be used to initialize postreSQL DB that stores indexed data
+1. Create .env file with database username and password. (Use .env.example to see the format) This user and password will be used to initialize postreSQL DB that stores indexed data
 
 2. Put the same user name and password in app.config.kusama. Also, put there the wss URL to the (Kusama, Westend, etc.) chain node. This file is used to initialize the indexer service so that it can connect to the database and to the Substrate node that hosts Chiba gallery pallet.
 
